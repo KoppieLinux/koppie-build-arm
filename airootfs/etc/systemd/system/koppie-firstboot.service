@@ -1,0 +1,11 @@
+[Unit]
+Description=Koppie Linux Firstboot Cleanup
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'rm -f /var/lib/pacman/db.lck /var/tmp/pamac/dbs/db.lck; if [ -d /usr/share/koppie/pacman-sync ]; then mkdir -p /var/lib/pacman/sync && cp -a /usr/share/koppie/pacman-sync/*.db /var/lib/pacman/sync/ 2>/dev/null || true; fi'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

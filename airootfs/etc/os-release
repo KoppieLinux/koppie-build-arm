@@ -1,0 +1,11 @@
+NAME="Koppie Linux"
+PRETTY_NAME="Koppie Linux"
+ID=koppie
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="36"
+HOME_URL="https://github.com/KoppieLinux/koppie-build"
+DOCUMENTATION_URL="https://github.com/KoppieLinux/koppie-build"
+SUPPORT_URL="https://github.com/KoppieLinux/koppie-repo"
+BUG_REPORT_URL="https://github.com/KoppieLinux/koppie-repo"
+LOGO=koppie

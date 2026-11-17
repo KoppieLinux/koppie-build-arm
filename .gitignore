@@ -1,0 +1,7 @@
+# Build and temporary artifacts
+build/
+out/
+*.log
+*.img
+*.tar.gz
+*.tar.zst

@@ -1,0 +1,40 @@
+---
+# Koppie Linux Calamares - branding (Rolling Release)
+componentName:         koppie
+
+strings:
+    productName:       Koppie Linux
+    shortProductName:  Koppie
+    version:           ""
+    shortVersion:      ""
+    versionedName:     Koppie Linux
+    shortVersionedName: Koppie
+    bootloaderEntryName: Koppie Linux
+    productUrl:        https://github.com/KoppieLinux/koppie-repo
+    supportUrl:        https://github.com/KoppieLinux/koppie-repo
+    knownIssuesUrl:    https://github.com/KoppieLinux/koppie-repo
+    releaseNotesUrl:   https://github.com/KoppieLinux/koppie-repo
+
+images:
+    productLogo:       logo.png
+    productIcon:       logo.png
+    productWallpaper:  /usr/share/wallpapers/Koppie/contents/Images_dark/5120x2880.png
+
+sidebar: widget
+navigation: widget
+
+style:
+   SidebarBackground:        "#2d2d2d"
+   SidebarText:              "#ffffff"
+   SidebarTextCurrent:        "#2d2d2d"
+   SidebarBackgroundCurrent: "#29a3f3"
+
+slideshowAPI:          1
+slideshow:             slideshow.qml
+
+windowExpanding:       normal
+windowSize:            1024px,520px
+windowPlacement:       center
+
+welcomeStyleCalamares: true
+welcomeExpanding:      true

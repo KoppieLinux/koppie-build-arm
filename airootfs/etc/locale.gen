@@ -1,0 +1,20 @@
+# Locales for Koppie Linux
+# English
+en_US.UTF-8 UTF-8
+en_GB.UTF-8 UTF-8
+
+# Indonesia & Jawa
+id_ID.UTF-8 UTF-8
+jv_ID.UTF-8 UTF-8
+
+# Arabic (Standar umum yang paling sering dipakai: Saudi Arabia & Mesir)
+ar_SA.UTF-8 UTF-8
+ar_EG.UTF-8 UTF-8
+
+# Cyrillic (Sirilik)
+ru_RU.UTF-8 UTF-8
+uk_UA.UTF-8 UTF-8
+be_BY.UTF-8 UTF-8
+bg_BG.UTF-8 UTF-8
+mk_MK.UTF-8 UTF-8
+sr_RS.UTF-8 UTF-8

@@ -1,0 +1,79 @@
+# Base system & Core
+base
+base-devel
+linux-aarch64
+linux-aarch64-headers
+git
+nano
+sudo
+wget
+curl
+htop
+pacman-contrib
+pciutils
+usbutils
+
+# Desktop Environment (Minimal KDE Plasma)
+plasma-desktop
+kwin
+kwayland
+kscreen
+plasma-nm
+plasma-pa
+breeze
+breeze-cursors
+breeze-gtk
+kde-gtk-config
+kdeplasma-addons
+plasma-systemmonitor
+plasma-welcome
+systemsettings
+xdg-desktop-portal-kde
+konsole
+pcmanfm-qt
+kcalc
+spectacle
+sddm
+sddm-kcm
+
+# Package Management & App Store
+flatpak
+archlinux-appstream-data
+yay
+koppie-software-centre
+calamares
+
+# Koppie Specific ARM apps (To be provided)
+koppie-driver-manager-arm
+koppie-update-manager-arm
+
+# Themes, Icons & Cursors
+papirus-icon-theme
+orchis-theme
+bibata-cursor-theme
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-dejavu
+ttf-liberation
+
+# Audio & Network
+networkmanager
+wpa_supplicant
+bluez
+bluez-utils
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+
+# Graphics (Mesa & Wayland)
+mesa
+mesa-utils
+vulkan-icd-loader
+xorg-server
+xorg-xwayland
+xdg-utils
+upower
+udisks2
+polkit

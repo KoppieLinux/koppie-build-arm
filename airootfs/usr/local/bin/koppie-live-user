@@ -1,0 +1,38 @@
+#!/bin/bash
+# Koppie Linux - buat live user di boot pertama (sebelum SDDM).
+# Password cadangan: koppie (dipakai kalau autologin gagal / sudo minta password)
+# Password root live juga: koppie (fallback rescue di TTY)
+if id live &>/dev/null; then
+    systemctl disable koppie-live-user.service
+    exit 0
+fi
+# Bikin grup dulu kalau belum ada (useradd GAGAL kalau 1 grup aja missing = live user nggak jadi = SDDM item)
+for g in wheel audio video optical storage power network lp scanner users; do
+    getent group "$g" >/dev/null || groupadd -r "$g"
+done
+useradd -m -G wheel,audio,video,optical,storage,power,network,lp,scanner -s /bin/bash live
+echo "live:koppie" | chpasswd
+echo "root:koppie" | chpasswd
+cp -a /etc/skel/. /home/live/
+chown -R live:live /home/live
+chmod 700 /home/live
+# Auto-trust launcher desktop (biar nggak ada dialog "trust", langsung jalan).
+# Best-effort: kalau gio gagal, user tinggal klik Continue sekali (fallback aman).
+if [ -f /home/live/Desktop/calamares.desktop ]; then
+    chmod +x /home/live/Desktop/calamares.desktop
+    chown live:live /home/live/Desktop/calamares.desktop
+    sudo -u live gio set /home/live/Desktop/calamares.desktop metadata::trusted true 2>/dev/null || true
+fi
+systemctl disable koppie-live-user.service
+# Backup vmlinuz ke RAM kalau boot copytoram (biar install tetap jalan
+# meski USB dicabut: unpackfs butuh file ini dari bootmnt).
+if [ -e /run/archiso/copytoram/airootfs.sfs ] && [ -e /run/archiso/bootmnt/koppie/boot/x86_64/vmlinuz-linux-lts ]; then
+    cp /run/archiso/bootmnt/koppie/boot/x86_64/vmlinuz-linux-lts /run/archiso/copytoram/vmlinuz-linux-lts 2>/dev/null || true
+fi
+
+# Restore pacman sync DB agar di mode live ISO user/KDM/KUM bisa langsung pacman -S tanpa -Sy dulu
+if [ -d /usr/share/koppie/pacman-sync ] && [ -n "$(ls -A /usr/share/koppie/pacman-sync/*.db 2>/dev/null)" ]; then
+    mkdir -p /var/lib/pacman/sync
+    cp -a /usr/share/koppie/pacman-sync/*.db /var/lib/pacman/sync/ 2>/dev/null || true
+fi
+
