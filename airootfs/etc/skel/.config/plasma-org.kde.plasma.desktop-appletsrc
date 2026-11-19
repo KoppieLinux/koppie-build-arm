@@ -58,7 +58,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][2][Applets][5][Configuration][General]
-launchers=applications:systemsettings.desktop,applications:pcmanfm-qt.desktop,preferred://browser,applications:koppie-software-centre.desktop,applications:org.kde.konsole.desktop
+launchers=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,preferred://browser,applications:koppie-software-centre.desktop,applications:org.kde.konsole.desktop
 
 [Containments][2][Applets][6]
 immutability=1
