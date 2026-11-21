@@ -11,7 +11,7 @@ You can build this on **any Linux laptop or PC** (both x86_64 Intel/AMD and nati
 Install the required build and cross-architecture emulation tools:
 
 ```bash
-sudo pacman -Syu --needed base-devel git wget bsdtar qemu-user-static qemu-user-static-binfmt binfmt-qemu-static
+sudo pacman -Syu --needed base-devel git wget libarchive qemu-user-static qemu-user-static-binfmt
 ```
 
 > **Note:** Sudo privileges are required for preparing the rootfs, mounting filesystems, and setting up permissions. Ensure your user has working `sudo` access and at least **15 GB** of free disk space.

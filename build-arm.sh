@@ -1,7 +1,7 @@
 #!/bin/bash
 # Koppie Linux ARM64 (aarch64) Image & Rootfs Builder
 # Designed for Apple Silicon (M1/M2/M3) and generic aarch64 UEFI systems.
-# Requires: qemu-user-static, binfmt, tar, wget, bsdtar
+# Requires: qemu-user-static, qemu-user-static-binfmt, tar, wget, libarchive (bsdtar)
 
 set -e
 set -o pipefail
@@ -12,7 +12,7 @@ sudo -n true || { echo "ERROR: sudo password required"; exit 1; }
 # Ensure qemu binfmt is ready for aarch64
 if [ ! -f /usr/bin/qemu-aarch64-static ]; then
     echo "Installing qemu-user-static for ARM64 emulation..."
-    sudo pacman -S --needed --noconfirm qemu-user-static qemu-user-static-binfmt binfmt-qemu-static
+    sudo pacman -S --needed --noconfirm qemu-user-static qemu-user-static-binfmt
 fi
 
 BUILD_DIR="build/rootfs"
