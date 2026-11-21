@@ -40,9 +40,18 @@ sddm-kcm
 # Package Management & App Store
 flatpak
 archlinux-appstream-data
-yay
 koppie-software-centre
-calamares
+
+# TODO(calamares & yay): keduanya binary arch-specific, jadi paket x86_64 di
+# koppie-repo tidak bisa dipakai. Belum ada build aarch64-nya di repo ALARM
+# manapun (core/extra/alarm/aur) — sudah dicek.
+#   yay        -> cross-compile Go (GOARCH=arm64), cepat, bisa dari host x86_64.
+#   calamares  -> harus di-compile per-arch, sama seperti Ubuntu (buildds) dan
+#                 Fedora (Koji) yang membangun calamares untuk arm64/aarch64.
+#                 Jalur kita: GitHub Actions runner ubuntu-24.04-arm (container
+#                 archlinux) -> upload .pkg.tar.zst aarch64 ke koppie-repo/aarch64.
+# yay
+# calamares
 
 # Koppie Specific ARM apps (To be provided)
 koppie-driver-manager-arm

@@ -44,10 +44,14 @@ sudo ./build-arm.sh
 ```
 
 > **What the script does automatically:**
-> - Verifies QEMU aarch64 emulation for building on x86 machines.
+> - Verifies QEMU aarch64 emulation for building on x86 machines (installs `qemu-user-static` + `qemu-user-static-binfmt` if missing, restarts `systemd-binfmt`, and refuses to continue until the aarch64 binfmt entry is registered).
 > - Downloads the clean Arch Linux ARM (ALARM) rootfs tarball.
+> - Mounts `/proc`, `/sys`, `/dev` and `/run` into the chroot so `mkinitcpio` (run while `linux-aarch64` installs) and the systemd hooks actually work.
+> - Installs the full package set listed in `packages.aarch64` (minimal KDE Plasma, SDDM, Firefox, themes, Koppie apps) inside the chroot.
 > - Injects the Koppie Linux custom desktop layout, themes (Orchis-dark, Papirus-Dark, Bibata cursor), and offline configurations.
 > - Compiles and outputs the ready-to-flash ARM products into `~/koppie-arm-products/`.
+
+> **Note:** the chroot runs under QEMU *user-mode* emulation, so compiling/installing is far slower than native — the package-install step alone can take a long time. Leave the terminal open until it prints `ARM Rootfs Prepared Successfully`.
 
 ---
 
