@@ -77,6 +77,11 @@ for m in proc sys dev run; do
     sudo mount --bind "/$m" "$BUILD_DIR/$m"
 done
 
+# Bersihkan cache lama pacman di rootfs agar transaksi baru tidak gagal
+# karena disk penuh (cache berdampak besar saat upgrade lengkap).
+# 'statvfs' gagal sering terjadi kalo cache bertumpuk di partisi kecil.
+sudo rm -rf "$BUILD_DIR/var/cache/pacman/pkg/"*
+
 # pacman -S - membaca target dari stdin, jadi komentar/baris kosong dibuang dulu.
 # '|| true' supaya pipefail tidak mematikan script kalau grep tidak menemukan baris.
 if [ ! -f packages.aarch64 ]; then
