@@ -16,7 +16,9 @@ if [ ! -f /usr/bin/qemu-aarch64-static ]; then
 fi
 
 BUILD_DIR="build/rootfs"
-OUT_DIR="/home/raihan/koppie-arm-products"
+# Output dir: home user yang memanggil script (tetap benar walau dijalankan dengan sudo)
+OWNER_HOME="$(getent passwd "${SUDO_USER:-$USER}" | cut -d: -f6)"
+OUT_DIR="${OWNER_HOME:-$HOME}/koppie-arm-products"
 mkdir -p "$BUILD_DIR" "$OUT_DIR"
 
 echo "=== [2/5] Fetching Arch Linux ARM Base Tarball ==="

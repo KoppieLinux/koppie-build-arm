@@ -32,9 +32,9 @@ cd ~/Projects/koppie-arch-arm
 ```
 
 ### 2. Verify Repository Configuration
-The build script automatically utilizes the official **Koppie Linux ARM repository** (`https://raw.githubusercontent.com/KoppieLinux/koppie-repo/master/aarch64`) for custom packages (`koppie-software-centre`, `koppie-driver-manager-arm`, `koppie-update-manager-arm`, `calamares`, `yay`).
+The build script uses the official **Koppie Linux ARM repository** (`https://raw.githubusercontent.com/KoppieLinux/koppie-repo/master/aarch64`) for the custom packages that live there (`koppie-software-centre`, `koppie-driver-manager-arm`, `koppie-update-manager-arm`).
 
-If you have built local packages in `~/koppie-arm-products/koppie-repo/aarch64`, the local repo path in `configs/pacman-arm.conf` can also be used.
+To build against locally-built packages instead, swap the `Server =` line in `configs/pacman-arm.conf` for a `file://` URL pointing at your local repo — note it must be reachable *inside* the chroot (e.g. bind-mounted into `build/rootfs`), not just a host path.
 
 ### 3. Build the ARM System Image
 Execute the build script with sudo permissions:
